@@ -1,9 +1,18 @@
+import { useRouter } from 'next/router';
 import DefaultErrorPage from 'next/error';
 import { fetchProductBySlug, fetchAllProducts } from '../../lib/api';
 import ProductView from '../../components/ProductView';
 import Sidebar from '../../components/Sidebar';
 
 export default function Product({ product }) {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return (
+      <div className="container mx-auto mt-32 text-center">Loading...</div>
+    );
+  }
+
   if (!product) {
     return <DefaultErrorPage statusCode={404} />;
   }
