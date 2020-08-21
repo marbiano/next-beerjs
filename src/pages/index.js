@@ -30,7 +30,7 @@ export default function Home({ products }) {
   );
 }
 
-export const getServerSideProps = async (context) => {
+export const getStaticProps = async () => {
   const products = await fetchAllProducts();
   return {
     props: {
