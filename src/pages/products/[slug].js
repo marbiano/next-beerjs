@@ -34,6 +34,6 @@ export const getStaticPaths = async () => {
     paths: products.map((product) => ({
       params: { slug: product.fields.slug },
     })),
-    fallback: false,
+    fallback: true,
   };
 };
